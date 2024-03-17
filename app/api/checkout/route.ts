@@ -29,8 +29,8 @@ export const POST = async (request: NextRequest) => {
       line_items: updatedItems,
       mode: "payment",
       success_url:
-        "http://localhost:3000/success?session_id={CHECKOUT_SESSION_ID}",
-      cancel_url: `http://localhost:3000/cancel`,
+        "https://furniture-store-sanity.vercel.app/success?session_id={CHECKOUT_SESSION_ID}",
+      cancel_url: `https://furniture-store-sanity.vercel.app/cancel`,
     });
     return NextResponse.json({
       message: "Connection is alive",

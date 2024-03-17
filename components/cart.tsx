@@ -53,13 +53,16 @@ const Cart = () => {
   );
   const createCheckout = async () => {
     const stripe = await stripePromise;
-    const response = await fetch("http://localhost:3000/api/checkout", {
-      method: "POST",
-      headers: { "Content-Type": "appication/json" },
-      body: JSON.stringify({
-        items: data.productData,
-      }),
-    });
+    const response = await fetch(
+      "https://furniture-store-sanity.vercel.app/api/checkout",
+      {
+        method: "POST",
+        headers: { "Content-Type": "appication/json" },
+        body: JSON.stringify({
+          items: data.productData,
+        }),
+      }
+    );
     const stripeData = await response.json();
     console.log(stripeData);
 
@@ -67,8 +70,6 @@ const Cart = () => {
       stripe?.redirectToCheckout({ sessionId: stripeData.id });
     }
   };
-
-  console.log(data.productData);
 
   return (
     <div className="w-full mt-7">
