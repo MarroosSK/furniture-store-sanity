@@ -78,14 +78,14 @@ const FilterMenu = ({ productData, category }: FilterProps) => {
                 <AccordionContent>
                   <div>
                     <div>
-                      Max: {filterContext.pickedPrice}
+                      Max: {filterContext?.pickedPrice}
                       <Slider
                         defaultValue={[1000]}
                         max={1000}
                         min={1}
                         step={1}
                         onValueChange={(val) =>
-                          filterContext.setPickedPrice(val[0])
+                          filterContext?.setPickedPrice(val[0])
                         }
                       />
                     </div>
@@ -102,11 +102,11 @@ const FilterMenu = ({ productData, category }: FilterProps) => {
                       <p
                         key={cat._id}
                         onClick={() =>
-                          filterContext.setPickedCategory(cat.title)
+                          filterContext?.setPickedCategory(cat.title)
                         }
                         className={cn(
                           "hover:underline cursor-pointer",
-                          cat.title === filterContext.pickedCategory
+                          cat.title === filterContext?.pickedCategory
                             ? "font-fold text-indigo-500"
                             : ""
                         )}
@@ -127,10 +127,10 @@ const FilterMenu = ({ productData, category }: FilterProps) => {
                       {productBrand?.map((item: string, index: number) => (
                         <p
                           key={index}
-                          onClick={() => filterContext.setPickedBrand(item)}
+                          onClick={() => filterContext?.setPickedBrand(item)}
                           className={cn(
                             "hover:underline cursor-pointer",
-                            item === filterContext.pickedBrand
+                            item === filterContext?.pickedBrand
                               ? "font-fold text-indigo-500"
                               : ""
                           )}
@@ -152,10 +152,10 @@ const FilterMenu = ({ productData, category }: FilterProps) => {
                       {productStatus?.map((item: string, index: number) => (
                         <p
                           key={index}
-                          onClick={() => filterContext.setPickedStatus(item)}
+                          onClick={() => filterContext?.setPickedStatus(item)}
                           className={cn(
                             "hover:underline cursor-pointer",
-                            item === filterContext.pickedStatus
+                            item === filterContext?.pickedStatus
                               ? "font-fold text-indigo-500"
                               : ""
                           )}
