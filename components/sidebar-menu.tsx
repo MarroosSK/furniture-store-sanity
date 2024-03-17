@@ -74,15 +74,15 @@ const SidebarMenu = () => {
               type="text"
               placeholder="Search  products here"
               className="flex-1 h-full outline-none  border-none bg-transparent placeholder:text-gray-600"
-              value={filterContext.searchQuery}
+              value={filterContext?.searchQuery}
               onChange={(e: ChangeEvent<HTMLInputElement>) =>
-                filterContext.setSearchQuery(e.target.value)
+                filterContext?.setSearchQuery(e.target.value)
               }
             />
 
             <Search
               className="w-5 h-5 cursor-pointer"
-              onClick={filterContext.handleSearch}
+              onClick={filterContext?.handleSearch}
             />
           </div>
           {navbarLinks.map((navLink, index: number) => (

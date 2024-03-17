@@ -30,15 +30,15 @@ const SearchModal = () => {
             type="text"
             placeholder="Search products here"
             className="py-4 flex-1 h-full outline-none border-none bg-transparent placeholder:text-white"
-            value={filterContext.searchQuery}
+            value={filterContext?.searchQuery}
             onChange={(e: ChangeEvent<HTMLInputElement>) =>
-              filterContext.setSearchQuery(e.target.value)
+              filterContext?.setSearchQuery(e.target.value)
             }
           />
 
           <Search
             className="w-5 h-5 cursor-pointer"
-            onClick={filterContext.handleSearch}
+            onClick={filterContext?.handleSearch}
           />
         </div>
       </DialogContent>
