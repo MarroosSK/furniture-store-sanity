@@ -1,0 +1,13 @@
+.sticky__header {
+  display: block;
+  position: sticky;
+  top: 0;
+  left: 0;
+  z-index: 45;
+  border-bottom: 1px solid rgb(254, 254, 254);
+  transition:  0.32s ease-in-out;
+  padding: 0.7rem 0;
+  background-color: #1f1f1f !important;
+  opacity: 1;
+  backdrop-filter: blur(0px) !important;
+}
