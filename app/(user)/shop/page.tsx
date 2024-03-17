@@ -4,7 +4,7 @@ import { useContext, useEffect, useState } from "react";
 
 import Container from "@/components/container";
 import NewStuffProduct from "@/components/sections/single-product";
-import { ArrowLeft } from "lucide-react";
+import { ArrowLeft, Loader2 } from "lucide-react";
 
 import { productsCategory } from "@/actions/fetch-categories";
 import { productDataAll } from "@/actions/fetch-category-by-title";
@@ -14,6 +14,8 @@ import Link from "next/link";
 
 const ShopPage = () => {
   const [productCategory, setProductCategory] = useState([]);
+  //hydratation fix
+  const [isLoaded, setIsLoaded] = useState(false);
 
   const filterContext = useContext(FilterContext);
   const [filteredData, setFilteredData] = useState([]);
@@ -71,9 +73,9 @@ const ShopPage = () => {
     fetchData();
   }, []);
 
-  console.log(filteredProducts);
-  console.log(filteredData);
-  console.log(productCategory);
+  useEffect(() => {
+    setIsLoaded(true);
+  }, []);
 
   return (
     <Container>
@@ -87,19 +89,28 @@ const ShopPage = () => {
             </Link>
           </div>
         </div>
-        <FilterMenu productData={filteredData} category={productCategory} />
-      </div>
-
-      <div className="w-full grid grid-cols-1 md:grid-cols-2 xl:grid-cols-4 gap-5">
-        {filteredProducts.map((item: any) => (
-          <NewStuffProduct key={item?._id} product={item} />
-        ))}
-        {filteredProducts.length === 0 && (
-          <div className="flex items-center justify-center px-auto h-full">
-            <h1>No product found</h1>
-          </div>
+        {isLoaded ? (
+          <FilterMenu productData={filteredData} category={productCategory} />
+        ) : (
+          <Loader2 className="animate-spin" />
         )}
       </div>
+      {isLoaded ? (
+        <div className="w-full grid grid-cols-1 md:grid-cols-2 xl:grid-cols-4 gap-5">
+          {filteredProducts.map((item: any) => (
+            <NewStuffProduct key={item?._id} product={item} />
+          ))}
+          {filteredProducts.length === 0 && (
+            <div className="flex items-center justify-center px-auto h-full">
+              <h1>No product found</h1>
+            </div>
+          )}
+        </div>
+      ) : (
+        <div className="flex  mx-auto flex-col justify-center items-center max-w-[500px] h-[500px] p-4 py-8    gap-4  rounded-md">
+          <Loader2 className="animate-spin" />{" "}
+        </div>
+      )}
     </Container>
   );
 };

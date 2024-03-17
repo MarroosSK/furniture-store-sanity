@@ -1,10 +1,17 @@
+"use client";
 import Cart from "@/components/cart";
 import Container from "@/components/container";
-import { ArrowLeft } from "lucide-react";
+import { ArrowLeft, Loader2 } from "lucide-react";
 import Link from "next/link";
-import React from "react";
+import React, { useEffect, useState } from "react";
 
 const CartPage = () => {
+  //hydratation fix
+  const [isLoaded, setIsLoaded] = useState(false);
+
+  useEffect(() => {
+    setIsLoaded(true);
+  }, []);
   return (
     <Container className="mt-16">
       <div className="flex flex-col   pb-10">
@@ -17,7 +24,13 @@ const CartPage = () => {
             </Link>
           </div>
         </div>
-        <Cart />
+        {isLoaded ? (
+          <Cart />
+        ) : (
+          <div className="flex  mx-auto flex-col justify-center items-center max-w-[500px] h-[500px] p-4 py-8    gap-4  rounded-md">
+            <Loader2 className="animate-spin" />{" "}
+          </div>
+        )}
       </div>
     </Container>
   );

@@ -24,11 +24,11 @@ const ProudctInfo = ({ product }: Props) => {
   const shopData = useSelector((state: RootState) => state.eshop);
   const dispatch = useDispatch();
 
+  const [reviews, setReviews] = useState<ReviewI[]>([]);
+
   const disabledButton = shopData.productData.find(
     (item) => item.myQuantity === product.quantity
   );
-
-  const [reviews, setReviews] = useState<ReviewI[]>([]);
 
   useEffect(() => {
     const fetchReviews = async () => {

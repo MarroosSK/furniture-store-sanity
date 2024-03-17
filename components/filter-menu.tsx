@@ -38,8 +38,6 @@ const FilterMenu = ({ productData, category }: FilterProps) => {
     new Set(productData.map((item: ProductProps) => item.status))
   );
 
-  console.log(category);
-
   return (
     <Sheet>
       <SheetTrigger>

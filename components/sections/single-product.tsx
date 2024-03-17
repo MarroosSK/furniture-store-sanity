@@ -11,6 +11,7 @@ import { useToast } from "../ui/use-toast";
 import { shimmer, toBase64 } from "@/lib/image";
 import { cn } from "@/lib/utils";
 import { AppDispatch, RootState } from "@/redux/store";
+import { useEffect, useState } from "react";
 
 interface Props {
   product: ProductProps;
@@ -22,10 +23,20 @@ const SingleProduct = ({ product, bg }: Props) => {
   const wishlistData = useSelector((state: RootState) => state.wishlist);
   const shopData = useSelector((state: RootState) => state.eshop);
   const dispatch = useDispatch<AppDispatch>();
+  //hydratation fix
+  const [isLoaded, setIsLoaded] = useState(false);
 
   const disabledButton = shopData.productData.find(
     (item) => item.myQuantity === product.quantity
   );
+
+  useEffect(() => {
+    setIsLoaded(true);
+  }, []);
+
+  if (!isLoaded) {
+    return null;
+  }
   return (
     <div className="w-full relative group  border bg-white rounded-md p-4 hover:shadow-lg duration-200 shadow-gray-500  overflow-hidden group">
       <div className="w-full h-80 flex items-center justify-center bg-white overflow-hidden">

@@ -32,8 +32,6 @@ const Cart = () => {
   const dispatch = useDispatch();
   const [totalAmt, setTotalAmt] = useState(0);
 
-  console.log(data);
-
   useEffect(() => {
     let price = 0;
     data &&

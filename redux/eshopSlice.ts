@@ -1,18 +1,15 @@
 import { ProductProps, StoreProductProps } from "@/types/types";
+import { getFromLocalStorage } from "@/utils/getLocalStorage";
 import { createSlice } from "@reduxjs/toolkit";
-
-//get localStorageData
-const items =
-  localStorage.getItem("cartData") !== null
-    ? JSON.parse(localStorage.getItem("cartData") as string)
-    : [];
 
 interface StoreState {
   productData: StoreProductProps[];
 }
 
 const initialState: StoreState = {
-  productData: items || [],
+  productData: getFromLocalStorage("cartData")
+    ? JSON.parse(getFromLocalStorage("cartData") || "{}")
+    : [],
 };
 
 export const eshopSlice = createSlice({

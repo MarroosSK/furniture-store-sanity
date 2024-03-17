@@ -54,6 +54,7 @@ const HeaderScroll = () => {
 
     return () => window.removeEventListener("scroll", stickyHeaderFunc);
   }, []);
+
   return (
     <header
       ref={headerRef}

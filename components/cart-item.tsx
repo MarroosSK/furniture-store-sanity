@@ -28,8 +28,6 @@ const CartItem = ({ item }: Props) => {
   const { toast } = useToast();
   const data = useSelector((state: RootState) => state.eshop);
   const dispatch = useDispatch();
-  console.log(item);
-  console.log(data);
 
   return (
     <div className="rounded-md shadow-sm w-full grid grid-cols-5 mb-4 border py-2">
