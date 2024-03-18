@@ -11,6 +11,7 @@ import { productDataAll } from "@/actions/fetch-category-by-title";
 import FilterMenu from "@/components/filter-menu";
 import { FilterContext } from "@/context/filter-context";
 import Link from "next/link";
+import SearchInput from "@/components/search-input";
 
 const ShopPage = () => {
   const [productCategory, setProductCategory] = useState([]);
@@ -88,6 +89,9 @@ const ShopPage = () => {
               back
             </Link>
           </div>
+        </div>
+        <div>
+          <SearchInput />
         </div>
         {isLoaded ? (
           <FilterMenu productData={filteredData} category={productCategory} />

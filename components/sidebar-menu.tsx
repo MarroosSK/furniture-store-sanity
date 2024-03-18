@@ -8,21 +8,12 @@ import {
   SheetTrigger,
 } from "@/components/ui/sheet";
 import { motion } from "framer-motion";
-import { ChangeEvent, useContext, useState } from "react";
+import { useState } from "react";
 
-import { FilterContext } from "@/context/filter-context";
 import { cn } from "@/lib/utils";
-import {
-  Heart,
-  LucideIcon,
-  Menu,
-  Search,
-  ShoppingCart,
-  Store,
-} from "lucide-react";
+import { Heart, LucideIcon, Menu, ShoppingCart, Store } from "lucide-react";
 import Link from "next/link";
 import { usePathname } from "next/navigation";
-import { Input } from "./ui/input";
 
 interface navLinksI {
   icon: LucideIcon;
@@ -50,7 +41,7 @@ const navbarLinks: navLinksI[] = [
 const SidebarMenu = () => {
   const [sheetOpen, setSheetOpen] = useState(false);
   const pathname = usePathname();
-  const filterContext = useContext(FilterContext);
+
   return (
     <Sheet open={sheetOpen} onOpenChange={setSheetOpen}>
       <SheetTrigger>
@@ -69,26 +60,7 @@ const SidebarMenu = () => {
           </SheetTitle>
         </SheetHeader>
 
-        <div className="mt-4 grid items-start gap-2 sticky top-[50px] overflow-hidden">
-          <div className="my-5 relative w-full inline-flex  h-10 text-base text-primeColor border-[1px] border-black items-center gap-2 justify-between px-6 rounded-md">
-            <Input
-              type="text"
-              placeholder="Search  products here"
-              className="flex-1 h-full outline-none  border-none bg-transparent placeholder:text-gray-600"
-              value={filterContext?.searchQuery}
-              onChange={(e: ChangeEvent<HTMLInputElement>) =>
-                filterContext?.setSearchQuery(e.target.value)
-              }
-            />
-
-            <Search
-              className="w-5 h-5 cursor-pointer"
-              onClick={() => {
-                filterContext?.handleSearch;
-                setSheetOpen(false);
-              }}
-            />
-          </div>
+        <div className="mt-7 grid items-start gap-2 sticky top-[50px] overflow-hidden">
           {navbarLinks.map((navLink, index: number) => (
             <motion.div
               key={navLink.title}

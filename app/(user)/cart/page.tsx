@@ -18,7 +18,7 @@ const CartPage = () => {
         <div className="mt-8 flex flex-col gap-y-2">
           <h2 className="text-2xl text-primeColor font-bold">Cart</h2>
           <div>
-            <Link href="/" className="flex items-center gap-x-2">
+            <Link href="/shop" className="flex items-center gap-x-2">
               <ArrowLeft />
               back
             </Link>
