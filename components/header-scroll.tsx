@@ -1,37 +1,15 @@
 "use client";
-import Link from "next/link";
-import React, { ChangeEvent, useEffect, useRef, useState } from "react";
-import { Input } from "./ui/input";
-import {
-  Heart,
-  LucideIcon,
-  Menu,
-  Search,
-  ShoppingCart,
-  Store,
-  X,
-} from "lucide-react";
-import { usePathname } from "next/navigation";
+import { Badge } from "@/components/ui/badge";
 import { cn } from "@/lib/utils";
+import { Heart, ShoppingCart, Store } from "lucide-react";
+import Link from "next/link";
+import { usePathname } from "next/navigation";
+import { useEffect, useRef } from "react";
+import { useSelector } from "react-redux";
+import "./header-scroll.css";
+import SearchModal from "./search-modal";
 import SidebarMenu from "./sidebar-menu";
 import { Button } from "./ui/button";
-import SearchModal from "./search-modal";
-import "./header-scroll.css";
-import { useSelector } from "react-redux";
-import { Badge } from "@/components/ui/badge";
-
-interface navLinksI {
-  icon: LucideIcon;
-  title: string;
-  href: string;
-}
-const navbarLinks: navLinksI[] = [
-  {
-    icon: Store,
-    title: "Shop",
-    href: "/shop",
-  },
-];
 
 const HeaderScroll = () => {
   const data = useSelector((state: any) => state.eshop);
@@ -63,32 +41,32 @@ const HeaderScroll = () => {
       <nav className="h-full max-w-screen-xl mx-auto px-4 xl:px-0 flex items-center justify-between gap-2">
         {/* <Menu /> */}
         <SidebarMenu />
-        <Link href={"/"} className="flex flex-1 items-center gap-x-2  text-3xl">
+        <Link
+          href={"/"}
+          className="hidden md:flex  flex-1 items-center gap-x-2  text-3xl"
+        >
           Furniture<span className="text-white">.COM</span>
         </Link>
 
-        <div className="hidden md:inline-flex items-center gap-2">
+        <div className="inline-flex items-center gap-0 md:gap-2">
           <Button
             className={cn(
-              `bg-transparent hover:bg-transparent text-white  rounded-none flex hover:font-medium  justify-center items-center px-12 
+              `hidden md:flex bg-transparent hover:bg-transparent text-white  rounded-none  hover:font-medium  justify-center items-center px-12 
                hover:underline underline-offset-4 decoration-[1px] hover:text-gray-500`
             )}
           >
             <SearchModal />
           </Button>
-          {navbarLinks.map((navLink, index: number) => (
-            <Link
-              href={navLink.href}
-              key={index}
-              className={cn(
-                `flex hover:font-medium  justify-center items-center px-12 
-               hover:underline underline-offset-4 decoration-[1px] hover:text-gray-500 `,
-                pathname === navLink.href && "text-grey-950 underline"
-              )}
-            >
-              <navLink.icon className="mr-2 h-6 w-6" />
-            </Link>
-          ))}
+          <Link
+            href={"/shop"}
+            className={cn(
+              `w-16 h-[70px] rounded-md  flex-col gap-1 text-black   overflow-x-hidden group cursor-pointer relative flex hover:font-medium  justify-center items-center px-12 
+         hover:underline underline-offset-4 decoration-[1px] hover:text-gray-500 `,
+              pathname === "/shop" && "text-grey-950 underline"
+            )}
+          >
+            <Store className="mr-2 h-6 w-6" />
+          </Link>
           <Link
             href={"/wishlist"}
             className={cn(

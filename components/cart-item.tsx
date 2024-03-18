@@ -53,11 +53,11 @@ const CartItem = ({ item }: Props) => {
         </Link>
         <h1 className="font-semibold">{item?.title.substring(0, 20)}</h1>
       </div>
-      <div className="col-span-5 md:col-span-3 flex items-center justify-between py-4 md:py-0 px-4 lg:px-0">
-        <p className="flex w-1/3 items-center text-lg font-semibold">
+      <div className="col-span-5 md:col-span-3 flex items-center justify-center md:justify-between py-4 md:py-0 px-0 md:px-4 lg:px-0">
+        <p className="flex w-1/3 items-center text:sm md:text-lg font-semibold">
           <Price amount={item?.price} />
         </p>
-        <div className="flex w-1/3 items-center gap-6 text-lg">
+        <div className="flex w-1/3 items-center gap-6  text:sm md:text-lg">
           <Button
             onClick={() => {
               dispatch(decreaseQuantity(item));
@@ -66,7 +66,7 @@ const CartItem = ({ item }: Props) => {
                 description: "Product got deleted from Cart!",
               });
             }}
-            className="w-6 h-6  text-2xl flex items-center justify-center  cursor-pointer duration-300 border-[1px] border-gray-300 hover:border-gray-500"
+            className="w-6 h-6   text:sm md:text-lg flex items-center justify-center  cursor-pointer duration-300 border-[1px] border-gray-300 hover:border-gray-500"
             disabled={item.myQuantity === 1}
           >
             -
@@ -80,16 +80,20 @@ const CartItem = ({ item }: Props) => {
                 description: "Product got added to Cart!",
               });
             }}
-            className="w-6 h-6  text-2xl flex items-center justify-center  cursor-pointer duration-300 border-[1px] border-gray-300 hover:border-gray-500"
+            className="w-6 h-6   text:sm md:text-lg flex items-center justify-center  cursor-pointer duration-300 border-[1px] border-gray-300 hover:border-gray-500"
             disabled={item.myQuantity === item.quantity}
           >
             +
           </Button>
         </div>
-        <div className="w-1/3 flex items-center font-titleFont font-bold text-lg">
+        <div className="hidden sm:flex w-1/3  items-center  font-bold  text:sm md:text-lg">
           <p>${item.myQuantity * item.price}</p>
         </div>
       </div>
+
+      <p className="pl-2 h-[40px] flex  w-[250px] sm:hidden items-center justify-center font-bold text-center  text:sm md:text-lg">
+        Total: ${item.myQuantity * item.price}
+      </p>
     </div>
   );
 };

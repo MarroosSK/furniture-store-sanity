@@ -8,7 +8,7 @@ import {
   SheetTrigger,
 } from "@/components/ui/sheet";
 import { motion } from "framer-motion";
-import { ChangeEvent, useContext } from "react";
+import { ChangeEvent, useContext, useState } from "react";
 
 import { FilterContext } from "@/context/filter-context";
 import { cn } from "@/lib/utils";
@@ -48,10 +48,11 @@ const navbarLinks: navLinksI[] = [
 ];
 
 const SidebarMenu = () => {
+  const [sheetOpen, setSheetOpen] = useState(false);
   const pathname = usePathname();
   const filterContext = useContext(FilterContext);
   return (
-    <Sheet>
+    <Sheet open={sheetOpen} onOpenChange={setSheetOpen}>
       <SheetTrigger>
         <Menu />
       </SheetTrigger>
@@ -96,6 +97,7 @@ const SidebarMenu = () => {
                 damping: 20,
                 delay: 0.4 + index / 10,
               }}
+              onClick={() => setSheetOpen(false)}
             >
               <Link href={navLink.href}>
                 <span
