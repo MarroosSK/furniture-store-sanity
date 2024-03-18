@@ -12,6 +12,7 @@ import FilterMenu from "@/components/filter-menu";
 import { FilterContext } from "@/context/filter-context";
 import Link from "next/link";
 import SearchInput from "@/components/search-input";
+import { DrawOutlineButton } from "@/components/buttons/draw-button";
 
 const ShopPage = () => {
   const [productCategory, setProductCategory] = useState([]);
@@ -91,12 +92,16 @@ const ShopPage = () => {
           </div>
           <SearchInput />
         </div>
-
-        {isLoaded ? (
-          <FilterMenu productData={filteredData} category={productCategory} />
-        ) : (
-          <Loader2 className="animate-spin" />
-        )}
+        <div className="mt-8 flex flex-col gap-y-2">
+          {isLoaded ? (
+            <FilterMenu productData={filteredData} category={productCategory} />
+          ) : (
+            <Loader2 className="animate-spin" />
+          )}
+          <DrawOutlineButton onClick={filterContext?.resetFilter}>
+            reset x
+          </DrawOutlineButton>
+        </div>
       </div>
       {isLoaded ? (
         <div className="w-full grid grid-cols-1 md:grid-cols-2 xl:grid-cols-4 gap-5">
