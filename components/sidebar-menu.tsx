@@ -83,7 +83,10 @@ const SidebarMenu = () => {
 
             <Search
               className="w-5 h-5 cursor-pointer"
-              onClick={filterContext?.handleSearch}
+              onClick={() => {
+                filterContext?.handleSearch;
+                setSheetOpen(false);
+              }}
             />
           </div>
           {navbarLinks.map((navLink, index: number) => (

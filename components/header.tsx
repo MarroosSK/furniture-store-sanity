@@ -30,7 +30,7 @@ const Header = () => {
         <div className="inline-flex items-center gap-0 md:gap-2">
           <Button
             className={cn(
-              `hidden md:flex bg-transparent hover:bg-transparent text-black  rounded-none  hover:font-medium  justify-center items-center px-12 
+              `hidden md:flex bg-transparent hover:bg-transparent text-primary   rounded-none  hover:font-medium  justify-center items-center px-12 
                hover:underline underline-offset-4 decoration-[1px] hover:text-gray-500`
             )}
           >
@@ -39,9 +39,9 @@ const Header = () => {
           <Link
             href={"/shop"}
             className={cn(
-              `w-16 h-[70px] rounded-md  flex-col gap-1 text-black   overflow-x-hidden group cursor-pointer relative flex hover:font-medium  justify-center items-center px-12 
+              `w-16 h-[70px] rounded-md  flex-col gap-1    overflow-x-hidden group cursor-pointer relative flex hover:font-medium  justify-center items-center px-12 
          hover:underline underline-offset-4 decoration-[1px] hover:text-gray-500 `,
-              pathname === "/shop" && "text-grey-950 underline"
+              pathname === "/shop" && "text-indigo-500 underline"
             )}
           >
             <Store className="mr-2 h-6 w-6" />
@@ -49,9 +49,9 @@ const Header = () => {
           <Link
             href={"/wishlist"}
             className={cn(
-              `w-16 h-[70px] rounded-md  flex-col gap-1 text-black   overflow-x-hidden group cursor-pointer relative flex hover:font-medium  justify-center items-center px-12 
+              `w-16 h-[70px] rounded-md  flex-col gap-1   overflow-x-hidden group cursor-pointer relative flex hover:font-medium  justify-center items-center px-12 
          hover:underline underline-offset-4 decoration-[1px] hover:text-gray-500 `,
-              pathname === "/wishlist" && "text-grey-950 underline"
+              pathname === "/wishlist" && "text-indigo-500 underline"
             )}
           >
             <Heart className="mr-2 h-6 w-6" />
@@ -68,9 +68,9 @@ const Header = () => {
           <Link
             href={"/cart"}
             className={cn(
-              `w-16 h-[70px] rounded-md  flex-col gap-1 text-black   overflow-x-hidden group cursor-pointer relative flex hover:font-medium  justify-center items-center px-12 
+              `w-16 h-[70px] rounded-md  flex-col gap-1   overflow-x-hidden group cursor-pointer relative flex hover:font-medium  justify-center items-center px-12 
          hover:underline underline-offset-4 decoration-[1px] hover:text-gray-500 md:border-r-[2px] border-r-gray-400 duration-200 last:border-r-0`,
-              pathname === "/cart" && "text-grey-950 underline"
+              pathname === "/cart" && "text-indigo-500 underline"
             )}
           >
             <ShoppingCart className="mr-2 h-6 w-6" />
