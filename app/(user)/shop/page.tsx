@@ -89,10 +89,9 @@ const ShopPage = () => {
               back
             </Link>
           </div>
-        </div>
-        <div>
           <SearchInput />
         </div>
+
         {isLoaded ? (
           <FilterMenu productData={filteredData} category={productCategory} />
         ) : (
